@@ -1,4 +1,4 @@
-require './guided_random'
+require './lib/guided_random'
 require 'test/unit'
 
 class RandomnessTest < Test::Unit::TestCase
@@ -20,8 +20,8 @@ class RandomnessTest < Test::Unit::TestCase
   end
   
   def test_third_check_randomness_using_law_of_big_numbers
-    @array = (1..199).to_a
-    @chances = [0.1]*199
+    @array = (1..500).to_a
+    @chances = [0.1]*500
     helper
     calculate_chances
     check_asserts(0.05)
