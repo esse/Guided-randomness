@@ -1,11 +1,9 @@
 require 'bundler'
-
-task :default => [:test]
-
-task :test do
-  ruby "test/test.rb"
-end
-
-
 Bundler::GemHelper.install_tasks
 
+namespace :test do
+  desc 'Run tests'
+  task :test do
+    ruby 'test/test.rb'
+  end
+end
