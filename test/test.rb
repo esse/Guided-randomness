@@ -1,4 +1,4 @@
-require './lib/guided_random'
+require './lib/guided_randomness'
 require 'test/unit'
 
 class RandomnessTest < Test::Unit::TestCase
@@ -22,6 +22,14 @@ class RandomnessTest < Test::Unit::TestCase
   def test_third_check_randomness_using_law_of_big_numbers
     @array = (1..500).to_a
     @chances = [0.1]*500
+    helper
+    calculate_chances
+    check_asserts(0.05)
+  end
+  
+  def test_fourth_check_randomness_using_law_of_big_numbers
+    @array = (1..300).to_a
+    @chances = (1..300).to_a
     helper
     calculate_chances
     check_asserts(0.05)
@@ -53,7 +61,7 @@ class RandomnessTest < Test::Unit::TestCase
   
   def check_asserts(deviation)
     @array.each_with_index do |a, i|
-     assert (@test_hash[a] - @chances[i]).abs < deviation
+     assert (@test_hash[a] - @chances[i]).abs < deviation, "Devation should be lower then #{deviation}, and actually it is: #{(@test_hash[a] - @chances[i]).abs}"
     end
   end
   

@@ -2,11 +2,12 @@ class Array
   
   def get_rand(arr)
     raise "Wrong number of arguments" unless arr.size == self.size
-    raise "Currently working only for arrays smaller then 200 elements" if arr.size > 199
+ #   raise "Currently working only for arrays smaller then 200 elements" if arr.size > 199
     total = arr.inject { |x, y| x+y }
     hash = { }
+    counter = (arr.size / 100)+ 1
     self.each_with_index do |arg, i|
-      hash[arg] = ((arr[i].to_f / total.to_f) * 100).round
+      hash[arg] = ((arr[i].to_f / total.to_f) * counter * 100).round
     end
     array_to_load = []
     hash.each_pair do |k,v|
