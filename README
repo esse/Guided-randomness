@@ -13,5 +13,3 @@ require 'guided_randomness'
 or
 require 'guided_randomness'
 [1,2,3].get_rand([4,12,9])
-
-LICENSE ?
