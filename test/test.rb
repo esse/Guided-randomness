@@ -61,7 +61,7 @@ class RandomnessTest < Test::Unit::TestCase
   
   def check_asserts(deviation)
     @array.each_with_index do |a, i|
-     assert (@test_hash[a] - @chances[i]).abs < deviation, "Devation should be lower then #{deviation}, and actually it is: #{(@test_hash[a] - @chances[i]).abs}"
+     assert( (@test_hash[a] - @chances[i]).abs < deviation, "Devation should be lower then #{deviation}, and actually it is: #{(@test_hash[a] - @chances[i]).abs}" )
     end
   end
   
