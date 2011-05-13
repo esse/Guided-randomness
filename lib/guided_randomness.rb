@@ -1,13 +1,29 @@
+require 'rubygems'
+require 'bsearch'
+
 class Array
+
   def get_rand(weights)
-    raise "Wrong number of array elements!" unless weights.size == self.size
+    GuidedRandomness.new(self, weights).sample.first
+  end
+  
+end
 
-    total = weights.inject(0, :+)
-    point = Kernel.rand * total
+class GuidedRandomness < Struct.new(:source, :weights)
 
-    self.each_with_index do |element, i|
-      return element if weights[i] >= point
-      point -= weights[i]
+  def initialize(*params)
+    super
+    raise ArgumentError, "Wrong number of array elements!" if weights.size != source.size || weights.size == 0
+    @sums = weights.inject([]){|ary, weight| ary << ((ary.last || 0) + weight)}
+    @total = @sums.last
+  end
+
+  def sample(size = 1)
+    size.times.map do
+      rand = Kernel.rand*@total
+      index = @sums.bsearch_lower_boundary{|x| x <=> rand}
+      source[index]
     end
   end
+
 end
