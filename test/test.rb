@@ -8,7 +8,7 @@ class RandomnessTest < Test::Unit::TestCase
     @chances = [10, 2, 8, 5, 9]
     helper
     calculate_chances
-    check_asserts(0.05)
+    check_asserts(0.01)
   end
   
   def test_second_check_randomness_using_law_of_big_numbers
@@ -16,7 +16,7 @@ class RandomnessTest < Test::Unit::TestCase
     @chances = [0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]
     helper
     calculate_chances
-    check_asserts(0.05)
+    check_asserts(0.01)
   end
   
   def test_third_check_randomness_using_law_of_big_numbers
@@ -24,7 +24,7 @@ class RandomnessTest < Test::Unit::TestCase
     @chances = [0.1]*500
     helper
     calculate_chances
-    check_asserts(0.05)
+    check_asserts(0.01)
   end
   
   def test_fourth_check_randomness_using_law_of_big_numbers
@@ -32,7 +32,7 @@ class RandomnessTest < Test::Unit::TestCase
     @chances = (1..300).to_a
     helper
     calculate_chances
-    check_asserts(0.05)
+    check_asserts(0.01)
   end
   
   
@@ -61,7 +61,7 @@ class RandomnessTest < Test::Unit::TestCase
   
   def check_asserts(deviation)
     @array.each_with_index do |a, i|
-     assert( (@test_hash[a] - @chances[i]).abs < deviation, "Devation should be lower then #{deviation}, and actually it is: #{(@test_hash[a] - @chances[i]).abs}" )
+     assert_in_delta @chances[i], @test_hash[a], deviation, "Devation should be lower then #{deviation}, and actually it is: #{(@test_hash[a] - @chances[i]).abs}"
     end
   end
   
