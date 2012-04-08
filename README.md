@@ -1,9 +1,5 @@
 # Guided Randomness #
 
-## Build status (from Travis CI) ##
-
-[![Build Status](https://secure.travis-ci.org/esse/guided_randomness.png?branch=master)](http://travis-ci.org/esse/guided_randomness)
-
 ## Description ##
 Simple gem for Ruby which extends Array class, and gave possibility to pick element from it at random, however with certain probability (probability is given for each element).
 
