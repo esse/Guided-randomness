@@ -7,3 +7,6 @@ namespace :test do
     ruby 'test/test.rb'
   end
 end
+
+
+task :default => 'test:test'

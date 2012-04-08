@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "guided_randomness"
 
   s.add_dependency "bsearch", "~> 1.5"
+  
+  s.add_development_dependency 'rake'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
